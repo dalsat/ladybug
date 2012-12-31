@@ -1,0 +1,7 @@
+cmake_minimum_required (VERSION 2.8)
+project (Cocci_view CXX)
+
+set (VIEW_SRC camera)
+#include_directories (..)
+
+add_library(view ${VIEW_SRC})
