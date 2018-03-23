@@ -29,7 +29,7 @@ int winW, winH;                // dimensione della finestra corrente
 int mouseX = -1, mouseY = -1;  // ultima posizone del mouse
 double currentTime, lastTime = 0;
 bool lost = false;    // stato della partita
-bool gamePaused = false;  // indica se il gioco è in pausa
+bool gamePaused = false;  // indica se il gioco ï¿½ in pausa
 bool blending = true; // alpha blending attivo
 
 GLfloat lightPosition[4] = { 0.5, 1, 0, 0 };      //posizione luce
@@ -44,7 +44,7 @@ unsigned char
 #include "field.cpp"
 
 
-// dichiarazione funzioni chiamate dal main 
+// dichiarazione funzioni chiamate dal main
 	void changeSize( int, int );
 	void draw();
 	void keyboard( unsigned char, int, int );
@@ -58,22 +58,22 @@ unsigned char
 	int main( int argc, char** argv ) {
 		/* Carico le Texture */
 		FILE *f_han;
-		if ( (f_han = fopen("Texture/cocci_128x128_RGB.raw", "rb") ) != NULL) {
+		if ( (f_han = fopen("textures/cocci_128x128_RGB.raw", "rb") ) != NULL) {
 			fread(texCannone, 128*128*3, 1, f_han);
 			fclose(f_han);
 		}
 
-		if ( (f_han = fopen("Texture/grass_512x512_RGB.raw", "rb") ) != NULL) {
+		if ( (f_han = fopen("textures/grass_512x512_RGB.raw", "rb") ) != NULL) {
 			fread(texGround, 512*512*3, 1, f_han);
 			fclose(f_han);
 		}
 
-		if ( (f_han = fopen("Texture/water_512x512_RGB.raw", "rb") ) != NULL) {
+		if ( (f_han = fopen("textures/water_512x512_RGB.raw", "rb") ) != NULL) {
 			fread(texWater, 512*512*3, 1, f_han);
 			fclose(f_han);
 		}
-		
-		if ( (f_han = fopen("Texture/clouds_1024x512_RGB.raw", "rb") ) != NULL) {
+
+		if ( (f_han = fopen("textures/clouds_1024x512_RGB.raw", "rb") ) != NULL) {
 			fread(texSky, 1024*512*3, 1, f_han);
 			fclose(f_han);
 		}
@@ -98,7 +98,7 @@ unsigned char
 
 // mipmap delle texture
 		gluBuild2DMipmaps( GL_TEXTURE_2D, GL_RGB, 512, 512, GL_RGB, GL_UNSIGNED_BYTE, texGround );
-		
+
 		gluBuild2DMipmaps( GL_TEXTURE_2D, GL_RGB, 512, 512, GL_RGB, GL_UNSIGNED_BYTE, texWater );
 
 		gluBuild2DMipmaps( GL_TEXTURE_2D, GL_RGB, 1024, 512, GL_RGB, GL_UNSIGNED_BYTE, texSky );
@@ -135,7 +135,7 @@ unsigned char
 		}
 
 // fullscreen!!!
-		glutFullScreen();
+		// glutFullScreen();
 
 // faccio sparire il mouse
 		glutSetCursor( GLUT_CURSOR_NONE );
@@ -179,11 +179,11 @@ unsigned char
 
 		drawPlayer();
 		drawEnemies();
-		
+
 		if ( lost ) {
 			gameLost();
 		}
-		
+
 		glLightfv( GL_LIGHT0, GL_POSITION, lightPosition );  // riposiziono la luce
 		glTranslatef( lightPosition[0], 4, lightPosition[2] );
 
@@ -212,7 +212,7 @@ unsigned char
 			case 'p':
 				pauseGame();
 				break;
-			
+
 			case 'b':
 				blending = !blending;
 				break;
@@ -298,7 +298,7 @@ glPopMatrix();        // POP
 		currentTime = glutGet( GLUT_ELAPSED_TIME );
 // ottengo il tempo passato dall'ultimo ciclo (in millisecondi)
 		float elapsedTime = currentTime - lastTime;
-// trasformo il tempo in qualcosa di più sensato dei millisecondi
+// trasformo il tempo in qualcosa di piï¿½ sensato dei millisecondi
 		double usefulTime = elapsedTime /500;  // secondi
 // aggiorno LastTime
 		lastTime = currentTime;

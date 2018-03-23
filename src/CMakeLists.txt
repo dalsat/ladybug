@@ -1,5 +1,5 @@
 
-set (LIBS model view glut GL GLU)
+set (LIBS model view glut)
 include_directories (".")
 
 set (SRC main)

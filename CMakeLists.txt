@@ -1,12 +1,16 @@
-project (ladybug)
+cmake_minimum_required (VERSION 3.10)
+project (Ladybug)
 
 set(ladybug_VERSION_MAJOR 0)
-set(ladybug_VERSION_MINOR 1)
+set(ladybug_VERSION_MINOR 2)
 
-cmake_minimum_required (VERSION 2.8)
 
 find_package(OpenGL REQUIRED)
 find_package(GLUT REQUIRED)
 
+
+include_directories(${OPENGL_INCLUDE_DIR})
+link_libraries(${OPENGL_LIBRARIES})
+
 add_subdirectory (src)
-add_subdirectory (texture)
+add_subdirectory (textures)
